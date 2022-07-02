@@ -21,63 +21,56 @@ function playRound(playerSelection, computerSelection) {
     playerchoice = playerSelection.toLowerCase(); // string functions do not change original string, only returns the output.
     computerchoice = computerSelection.toLowerCase();
 
-    // if (playerchoice == computerchoice) {
-    //     return `Both players chose ${playerchoice}, this is a tie.`
-    // } else if (playerchoice == 'rock' && computerchoice == 'paper') {
-    //     return 'You lose; paper beats rock.'
-    // } else if (playerchoice == 'rock' && computerchoice == 'scissors') {
-    //     return 'You win; rock beats scissors.'
-    // } else if (playerchoice == 'paper' && computerchoice == 'rock') {
-    //     return 'You win; paper beats rock.'
-    // } else if (playerchoice == 'paper' && computerchoice == 'scissors') {
-    //     return 'You lose; scissors beat paper.'
-    // } else if (playerchoice == 'scissors' && computerchoice == 'rock') {
-    //     return 'You lose; rock beats scissors.'
-    // } else if (playerchoice == 'scissors' && computerchoice == 'paper') {
-    //     return 'You win; scissors beat paper.'
-    // }
-
     // 1 means you win, 0 is for a tie, -1 means the computer wins
     if (playerchoice == computerchoice) {
+        console.log(`Both players chose ${playerchoice}, this is a tie.`);
         return TIE;
     } else if (playerchoice == 'rock' && computerchoice == 'paper') {
+        console.log('You lose; paper beats rock.');
         return LOSE;
     } else if (playerchoice == 'rock' && computerchoice == 'scissors') {
+        console.log('You win; rock beats scissors.');
         return WIN;
     } else if (playerchoice == 'paper' && computerchoice == 'rock') {
+        console.log('You win; paper beats rock.');
         return WIN;
     } else if (playerchoice == 'paper' && computerchoice == 'scissors') {
+        console.log('You lose; scissors beat paper.');
         return LOSE;
     } else if (playerchoice == 'scissors' && computerchoice == 'rock') {
+        console.log('You lose; rock beats scissors.');
         return LOSE;
     } else if (playerchoice == 'scissors' && computerchoice == 'paper') {
+        console.log('You win; scissors beat paper.');
         return WIN;
     }
 }
 
 function game() {
     let user_choice;
-    let score=0; 
-    let result; 
+    let user_score=0; 
+    let computer_score=0;
+    let round_result; 
 
     for (let i = 0; i <=4; i++) {
         user_choice = prompt("Do you pick rock, paper, or scissors?");
-        result = playRound(user_choice, computerPlay()); 
-        score += result;
-        if (result == 1){
-            console.log('You won this round!');
-        } else if (result == -1) {
-            console.log('You lost this round :(');
-        } else {
-            console.log('No winners this round! You both chose the same thing.');
-        }
+        round_result = playRound(user_choice, computerPlay()); 
 
+        if (round_result == WIN) {
+            user_score += WIN;
+        } else if (round_result == LOSE) {
+            computer_score += WIN;
+        } 
+        console.log(`Your score: ${user_score}. Computer score: ${computer_score}`);
     }
-    if (score > 0) {
+
+    if (user_score > computer_score) {
         console.log("You won the best of five game! Congrats!");
-    } else if (score < 0) {
+    } else if (user_score < computer_score) {
         console.log("You lost the best of five game :(");
     } else {
         console.log("Wow, you tied with the computer! What are the odds of that?");
     }
 }
+
+// NOTE TO SELF: the code above can definitely be improved. For the user, it is better if you can print to the console what the computer chose in response to the user choice (it can be easily deduced, but it'd be less cryptic if the function automatically printed the result). Futhermore, print the box score (e.g., you have a score of 1, the computer has a score of 3) at each iteration of the game. 
