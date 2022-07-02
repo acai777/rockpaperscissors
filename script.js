@@ -73,4 +73,4 @@ function game() {
     }
 }
 
-// NOTE TO SELF: the code above can definitely be improved. For the user, it is better if you can print to the console what the computer chose in response to the user choice (it can be easily deduced, but it'd be less cryptic if the function automatically printed the result). Futhermore, print the box score (e.g., you have a score of 1, the computer has a score of 3) at each iteration of the game. 
+// NOTE TO SELF: the code above can definitely be improved. For the user, it is better if you can print to the console what the computer chose in response to the user choice (it can be easily deduced, but it'd be less cryptic if the function automatically printed the result). Futhermore, print the box score (e.g., you have a score of 1, the computer has a score of 3) at each iteration of the game. UPDATE: made the necessary changes to improve the game. Game can still be improved further in several ways (and the code can be cleaner), but leave as is for now.
