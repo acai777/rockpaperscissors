@@ -54,13 +54,15 @@ function game() {
 
     for (let i = 0; i <=4; i++) {
         user_choice = prompt("Do you pick rock, paper, or scissors?");
-        round_result = playRound(user_choice, computerPlay()); 
+        computer_choice = computerPlay()
+        round_result = playRound(user_choice, computer_choice); 
 
         if (round_result == WIN) {
             user_score += WIN;
         } else if (round_result == LOSE) {
             computer_score += WIN;
         } 
+        console.log(`You chose ${user_choice}. The computer chose: ${computer_choice}`);
         console.log(`Your score: ${user_score}. Computer score: ${computer_score}`);
     }
 
