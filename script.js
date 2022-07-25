@@ -54,7 +54,7 @@ function game() {
 
     for (let i = 0; i <=4; i++) {
         user_choice = prompt("Do you pick rock, paper, or scissors?");
-        computer_choice = computerPlay()
+        computer_choice = computerPlay().toLowerCase()
         round_result = playRound(user_choice, computer_choice); 
 
         if (round_result == WIN) {
