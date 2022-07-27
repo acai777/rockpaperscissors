@@ -17,6 +17,17 @@ function computerPlay() {
     }
 }
 
+function adjustScore(result) {
+    let yourScore = document.querySelector('#yourScore');
+    let computerScore = document.querySelector('#computerScore');
+
+    if (result == LOSE) {
+        computerScore.textContent = parseInt(computerScore.textContent) +1;
+    } 
+    else if (result == WIN) {
+        yourScore.textContent = parseInt(yourScore.textContent) +1;
+    }
+}
 function playRound(playerSelection, computerSelection) {
     playerchoice = playerSelection.toLowerCase(); // string functions do not change original string, only returns the output.
     computerchoice = computerSelection.toLowerCase();
@@ -24,25 +35,43 @@ function playRound(playerSelection, computerSelection) {
     // 1 means you win, 0 is for a tie, -1 means the computer wins
     if (playerchoice == computerchoice) {
         console.log(`Both players chose ${playerchoice}, this is a tie.`);
-        return TIE;
+        //return TIE;
     } else if (playerchoice == 'rock' && computerchoice == 'paper') {
         console.log('You lose; paper beats rock.');
-        return LOSE;
+        //return LOSE;
+        adjustScore(LOSE);
     } else if (playerchoice == 'rock' && computerchoice == 'scissors') {
         console.log('You win; rock beats scissors.');
-        return WIN;
+        //return WIN;
+        adjustScore(WIN);
     } else if (playerchoice == 'paper' && computerchoice == 'rock') {
         console.log('You win; paper beats rock.');
-        return WIN;
+        //return WIN;
+        adjustScore(WIN);
     } else if (playerchoice == 'paper' && computerchoice == 'scissors') {
         console.log('You lose; scissors beat paper.');
-        return LOSE;
+        //return LOSE;
+        adjustScore(LOSE);
     } else if (playerchoice == 'scissors' && computerchoice == 'rock') {
         console.log('You lose; rock beats scissors.');
-        return LOSE;
+        //return LOSE;
+        adjustScore(LOSE);
     } else if (playerchoice == 'scissors' && computerchoice == 'paper') {
         console.log('You win; scissors beat paper.');
-        return WIN;
+        //return WIN;
+        adjustScore(WIN);
+    }
+
+    // For if we've reached a score of five 
+    if (parseInt(computerScore.textContent) == 5) {
+        let winner = document.createElement('div');
+        winner.textContent = "The winner is the Computer!"
+        document.querySelector('#wrapper').appendChild(winner);
+    }
+    if (parseInt(yourScore.textContent) == 5) {
+        let winner = document.createElement('div');
+        winner.textContent = "You have won the game! Congrats!"
+        document.querySelector('#wrapper').appendChild(winner);
     }
 }
 
@@ -96,7 +125,7 @@ NOTE:
 running "rock.addEventListener("click", playRound('rock', computerPlay()));" does NOT work because you are running the playRound function ight when addEventListener is called, so it is now not a reference/call to a function, but the return value from playRound. Instead, we use an arrow function (because there is no parameter we are inserting, we can use blank parentheses with nothing wrapped inside). 
 */
 
-
+// Add div for displaying results and changing 
 
 
 
