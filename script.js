@@ -82,14 +82,21 @@ let rock = document.querySelector('#rock');
 let paper = document.querySelector('#paper');
 let scissors = document.querySelector('#scissors');
 
-rock.addEventListener("click", () => playRound('rock', computerPlay()));
-paper.addEventListener("click", () => playRound('paper', computerPlay()));
-scissors.addEventListener("click", () => playRound('scissors', computerPlay()));
+rock.addEventListener("click", () => {
+    playRound('rock', computerPlay())
+});
+paper.addEventListener("click", () => {
+    playRound('paper', computerPlay())
+});
+scissors.addEventListener("click", () => {
+    playRound('scissors', computerPlay())
+});
+/*
+NOTE: 
+running "rock.addEventListener("click", playRound('rock', computerPlay()));" does NOT work because you are running the playRound function ight when addEventListener is called, so it is now not a reference/call to a function, but the return value from playRound. Instead, we use an arrow function (because there is no parameter we are inserting, we can use blank parentheses with nothing wrapped inside). 
+*/
 
-// button.addEventListener("click", () => {
-//     console.log("Button clicked.");
-//   });
 
 
 
-// NOTE TO SELF: the code above can definitely be improved. For the user, it is better if you can print to the console what the computer chose in response to the user choice (it can be easily deduced, but it'd be less cryptic if the function automatically printed the result). Futhermore, print the box score (e.g., you have a score of 1, the computer has a score of 3) at each iteration of the game. UPDATE: made the necessary changes to improve the game. Game can still be improved further in several ways (and the code can be cleaner), but leave as is for now.
+
