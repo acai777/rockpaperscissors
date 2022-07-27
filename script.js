@@ -127,5 +127,7 @@ running "rock.addEventListener("click", playRound('rock', computerPlay()));" doe
 
 // Add div for displaying results and changing 
 
+// other things you can do to make this work better: stop the game, and ask user if they'd like to restart once either the user or computer reaches 5 points. Change the interface to make it friendlier to the user. 
+
 
 
